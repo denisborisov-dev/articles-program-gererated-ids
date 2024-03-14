@@ -4,6 +4,7 @@ Revision ID: fd0b55b207fb
 Revises:
 Create Date: 2023-08-09 21:14:29.733520
 """
+
 import uuid
 
 import sqlalchemy

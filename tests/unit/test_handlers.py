@@ -136,22 +136,22 @@ class TestArticleHandlers:
         assert article.created_by == 1
 
     async def test_can_delete_article(self, fake_uow: FakeUnitOfWork) -> None:
-        article_ids: list[
-            uuid.UUID
-        ] = await ServiceClass.create_articles_in_repository(  # type: ignore[assignment]
-            fake_uow,
-            {
-                "title": "FIRST TITLE",
-                "preview": "FIRST PREVIEW",
-                "body": "FIRST BODY",
-                "created_by": 1,
-            },
-            {
-                "title": "SECOND TITLE",
-                "preview": "SECOND PREVIEW",
-                "body": "SECOND BODY",
-                "created_by": 2,
-            },
+        article_ids: list[uuid.UUID] = (
+            await ServiceClass.create_articles_in_repository(  # type: ignore[assignment]
+                fake_uow,
+                {
+                    "title": "FIRST TITLE",
+                    "preview": "FIRST PREVIEW",
+                    "body": "FIRST BODY",
+                    "created_by": 1,
+                },
+                {
+                    "title": "SECOND TITLE",
+                    "preview": "SECOND PREVIEW",
+                    "body": "SECOND BODY",
+                    "created_by": 2,
+                },
+            )
         )
 
         await ServiceClass.delete_and_retrieve_article(fake_uow, article_ids[1])

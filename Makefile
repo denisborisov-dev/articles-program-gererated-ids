@@ -7,6 +7,7 @@ export PYTHONDONTWRITEBYTECODE=1
 .PHONY: pre-commit
 pre-commit:
     # Run pre-commit checks
+	poetry run pre-commit install
 	poetry run pre-commit autoupdate
 	poetry run pre-commit run --all-files
 
